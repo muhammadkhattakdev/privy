@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="chat-room-wrapper">
+    <div class="room">
+        <div class="navbar">
+            <h3>
+                Chat Room ID : jflsjdlfjl32jjfdsljvlcxjljlwejlr#dlkfjsl
+            </h3>
+        </div>
+        <div class="messages-wrapper" id="messages-wrapper">
+            <!-- Messages will be dynamically loaded here -->
+        </div>
+        <form class="chat-form">
+            <input spellcheck="false" placeholder="Type your message..." type="text">
+            <button type="submit" class="chat-send-btn">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const roomName = "{{roomId}}";  
+    const socket = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${roomName}/`);
+
+    socket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        console.log('Message:', data.message);
+        console.log('User:', data.user);
+        console.log('Time:', data.time);
+
+        // Add received message to the messages-wrapper
+        const messageWrapper = document.getElementById('messages-wrapper');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message');
+        messageElement.innerHTML = `
+            <p class="message-text">${data.message}</p>
+            <span class="time-text">${data.time}</span>
+        `;
+        messageWrapper.appendChild(messageElement);
+        messageWrapper.scrollTop = messageWrapper.scrollHeight;  // Scroll to the bottom
+    };
+
+    document.querySelector('.chat-form').onsubmit = function(e) {
+        e.preventDefault();
+        const input = document.querySelector('input').value;
+        const messageData = {
+            message: input,
+            time: new Date().toLocaleTimeString()
+        };
+
+        socket.send(JSON.stringify(messageData));  // Send message through WebSocket
+        document.querySelector('input').value = '';
+    };
+
+    // When the page loads, request previous messages from the server (if needed)
+    window.onload = function() {
+
+        fetch(`/messages/?room_id=jfldskjf`)
+            .then(response => response.json())
+            .then(messages => {
+                console.log(messages);
+                const messageWrapper = document.getElementById('messages-wrapper');
+                messages.forEach(message => {
+                    const messageElement = document.createElement('div');
+                    messageElement.classList.add('chat-message');
+                    messageElement.innerHTML = `
+                        <p class="message-text">${message.message}</p>
+                        <span class="time-text">${message.time}</span>
+                    `;
+                    messageWrapper.appendChild(messageElement);
+                });
+                messageWrapper.scrollTop = messageWrapper.scrollHeight;  // Scroll to the bottom
+            })
+            .catch(error => console.error("Error loading previous messages:", error));
+    };
+
+</script>
+
+{% endblock %}

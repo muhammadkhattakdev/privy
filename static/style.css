@@ -1,0 +1,252 @@
+:root {
+    --secondary-color: #28A745;   
+    --primary-color:#409afb;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('../static/fonts/Montserrat-Regular.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial';
+    box-sizing: border-box;
+    font-family: "Roboto";
+}
+
+/* .app-background {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+} */
+
+
+/* .app-background .blur-1 {
+    width: 20vw;
+    height: 16vw;
+    background-color: #007BFF;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    filter: blur(110px);
+} */
+
+.app {
+    background-color: rgb(224, 224, 224);
+    min-height: 100vh;
+}
+
+
+.homepage-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.homepage-wrapper .create-chat-box {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 10vh;
+    padding: 2rem;
+    box-shadow: 0px 0px 3px gray;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+}
+
+.homepage-wrapper .create-chat-box .link-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.homepage-wrapper .create-chat-box .link-bar .room-link {
+    /* background-color: rgba(162, 151, 151, 0.712); */
+    color: white;
+    background-color: var(--primary-color);
+    padding: .5rem 1rem;
+    border-radius: 4px;
+}
+
+.homepage-wrapper .create-chat-box .link-bar .copy-btn {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.homepage-wrapper .create-chat-box .link-bar .copy-btn:hover {
+    box-shadow: 0px 0px 1px gray;
+}
+
+
+/* CHAT ROOM PAGE STYLING STARTS  */
+
+
+.chat-room-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.chat-room-wrapper .room {
+    width: 70vw;
+    height: 85vh;
+    margin-top: 10vh;
+    box-shadow: 0px 0px 2px gray;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+}
+
+
+.chat-room-wrapper .room .navbar {
+    padding: .4rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 8px 8px 0px 0px;
+    flex: 0 0 auto;
+}
+
+.chat-room-wrapper .room .navbar h3 {
+    letter-spacing: 1px;
+}
+
+.chat-room-wrapper .room .chat-form {
+    width: 100%;
+    flex: 0 0 3rem;
+    box-sizing: border-box;
+    display: flex;
+    border-top: 1px solid lightgray;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.chat-room-wrapper .room .chat-form input {
+    color: black;
+    box-sizing: border-box;
+    height: 100%;
+    padding: .2rem 1rem;
+    width: calc(100% - 5rem);
+    border-radius: 0px 0px 8px 8px;
+    outline: none;
+    border:none;
+    font-size: 17px;
+}
+
+.chat-room-wrapper .room .chat-form button {
+    width: 5rem;
+    box-sizing: border-box;
+    height: 100%;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 0px 0px 8px 0px;
+    font-size: 17px;
+}
+
+.chat-room-wrapper .room .chat-form button:hover {
+    cursor: pointer;
+}
+
+.chat-room-wrapper .room .messages-wrapper {
+    flex: 1;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: .8rem 1rem;
+}
+
+.chat-room-wrapper .room .messages-wrapper::-webkit-scrollbar {
+    width: 8px;
+    background-color: white;
+}
+
+.chat-room-wrapper .room .messages-wrapper::-webkit-scrollbar-thumb {
+    width: 8px;
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.chat-room-wrapper .room .messages-wrapper .chat-message {
+    color: white;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: flex-end;
+    padding: .3rem .5rem;
+    border-radius: 0px 10px 10px 20px;
+    gap: 10px;
+}
+
+.chat-room-wrapper .room .messages-wrapper .chat-message .message-text {
+    font-size: 17px;
+}
+
+.chat-room-wrapper .room .messages-wrapper .chat-message .time-text {
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:600px) {
+    .chat-room-wrapper .room {
+        width: 100vw;
+        height: 100vh;
+        margin-top: 0;
+        border-radius: 0;
+    }
+    .chat-room-wrapper .room .navbar {
+        border-radius: 0;
+    }
+}
+
+
+
+

@@ -27,18 +27,17 @@ def chatRoom(request, roomId):
 
 def chat_messages(request):
     roomId = request.GET.get('room_id')
-    print(roomId)
+    print('Room Id to views.py file', roomId)
     try :
         print("helo")
         r = redis.Redis(host='localhost', port=6379, db=0)
         messages = r.lrange(roomId, 0, 10)
         message_list = []
-        print('hello world')
         for message_data in messages:
+            print('hello world')
             message_json = json.loads(message_data)
             message_list.append({
                 'message': message_json['message'],
-                'user': message_json['user'],
                 'time': message_json.get('time', 'Unknown Time')
             })
     except:

@@ -6,8 +6,11 @@
     <div class="room">
         <div class="navbar">
             <h3>
-                Chat Room ID : jflsjdlfjl32jjfdsljvlcxjljlwejlr#dlkfjsl
+                Privy
             </h3>
+            <div class="navbar-menu">
+                <button>Copy Link</button>
+            </div>
         </div>
         <div class="messages-wrapper" id="messages-wrapper">
             <!-- Messages will be dynamically loaded here -->
@@ -28,7 +31,6 @@
     socket.onmessage = function(e) {
         const data = JSON.parse(e.data);
         console.log('Message:', data.message);
-        console.log('User:', data.user);
         console.log('Time:', data.time);
 
         // Add received message to the messages-wrapper
@@ -58,7 +60,7 @@
     // When the page loads, request previous messages from the server (if needed)
     window.onload = function() {
 
-        fetch(`/messages/?room_id=jfldskjf`)
+        fetch(`/messages/?room_id=${roomName}`)
             .then(response => response.json())
             .then(messages => {
                 console.log(messages);

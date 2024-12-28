@@ -3,8 +3,11 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
+    path('', views.home, name='homepage'),
+    path('create-room/', views.create_room, name='create-room'),
     path('messages/', views.chat_messages, name='messages'),
     path('room/<roomId>', views.chatRoom, name='chat_room'),
 ]
+
+
 

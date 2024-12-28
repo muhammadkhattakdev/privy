@@ -24,6 +24,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -31,6 +32,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'chat_application.urls'
 
@@ -86,6 +88,35 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSP_SCRIPT_SRC = (
+    "'self'",
+    "https://kit.fontawesome.com",  # Correct domain for Font Awesome scripts
+    "'unsafe-inline'",             # If inline scripts are used
+    "'unsafe-eval'",               # If eval() is needed (usually discouraged)
+)
+
+CSP_DEFAULT_SRC = ("'self'",)
+
+CSP_CONNECT_SRC = (
+    "'self'", 
+    "ws://127.0.0.1:8000",  
+    "https://ka-f.fontawesome.com"  # Allow Font Awesome connections
+)
+
+CSP_IMG_SRC = ("'self'", "data:")
+
+CSP_STYLE_SRC = (
+    "'self'",
+    "https://kit.fontawesome.com", # Allow Font Awesome styles
+    "'unsafe-inline'",            # Allow inline styles if needed
+)
+
+CSP_FONT_SRC = (
+    "'self'",
+    "https://kit.fontawesome.com",
+    "https://ka-f.fontawesome.com",  # Allow Font Awesome webfonts
+    "https://cdnjs.cloudflare.com",  # Optional if used
+)
 
 LANGUAGE_CODE = 'en-us'
 

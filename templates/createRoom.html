@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="homepage-navbar">
+    <h1>Privy</h1>
+</div>
+
+<div class="homepage-wrapper">
+    <div class="create-chat-box">
+        <h2>Copy Link</h2>
+        <div class="link-bar">
+            <div class="room-link">
+                {{room_link}}
+            </div>
+            <div class="copy-btn">
+                <i class="fa-regular fa-copy"></i>
+            </div>
+        </div>
+        <h3>
+            Or
+        </h3>
+        <div class="qr-code-container">
+            <img class="qr-code-image" src="data:image/png;base64,{{ qr_code_data }}" alt="QR Code">
+            <h4>
+                Scan QR Code
+            </h4>
+        </div>
+        <div class="btn-wrapper">
+
+            <a href="{{room_link}}" target="_blank" class="btn-secondary">Enter Room</a>
+        </div>
+        </div>
+</div>
+
+
+
+
+<script>
+    const copyBtn = document.querySelector('.copy-btn');
+    const roomLink = document.querySelector('.room-link');
+    copyBtn.addEventListener('click', function() {
+    // Get the text inside the room link
+    const textToCopy = roomLink.textContent.trim();
+
+    // Use the Clipboard API to copy the text
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        // Optionally, you can display a success message or change the icon to show it has been copied
+    }).catch(function(error) {
+        console.error('Error copying text: ', error);
+    });
+});
+</script>
+
+
+{% endblock %}

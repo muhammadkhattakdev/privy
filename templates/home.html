@@ -1,21 +1,77 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block content %}
 
 
-<div class="homepage-wrapper">
-    <div class="create-chat-box">
-        <h2>Copy Link</h2>
-        <div class="link-bar">
-            <div class="room-link">
-                https://my-app-domain.com/fldksjflkjsdlfjdsljflsdlfjldsj123fdw32fdsjlj#jfldskj
-            </div>
-            <div class="copy-btn">
-                <i class="fa-regular fa-copy"></i>
+<!-- <div class="blur-1">
+    
+</div>
+<img class="lock-img" src="{% static 'images/lock.svg' %}" alt="">
+<div class="mirror-background">
+
+</div> -->
+
+<div class="intro-wrapper">
+    <div class="navbar-1">
+        <h1>Privy</h1>
+    </div>
+    <img class="lock-img" src="{% static 'images/lock.svg' %}" alt="">
+
+    <div class="content-container">
+        <div class="content-wrapper">
+            <h1>Welcome to Privy</h1>
+
+            <h3>Your Secure, Anonymous, and Disposable Chat Solution</h3>
+
+            <h3>Why Choose Us?</h3>
+            <ul>
+                <li>
+                    <h4>End-to-End Encryption: </h4> <span class="desc">Every message is securely encrypted, ensuring privacy.</span>
+                </li>
+                <li>
+                    <h4>No Registration Required: </h4> <span class="desc"> Join or create a chat room instantly—no usernames, no emails.</span>
+                </li>
+                <li>
+                    <h4>Ephemeral Messaging: </h4> <span class="desc">Messages are deleted when the chat session ends. Nothing is stored.</span>
+                </li>
+                <li>
+                    <h4>Anonymity Guaranteed: </h4> <span class="desc">Users are assigned anonymous IDs, keeping your identity private.</span>
+                </li>
+            </ul>
+            <h3>How It Works:</h3>
+            <ul>
+                <li>
+                    <h4>Create or Join a Room: </h4> <span class="desc">Share the unique room link or QR code with others.</span>
+                </li>
+                <li>
+                    <h4>Start Chatting Securely: </h4> <span class="desc"> Exchange messages in real time with peace of mind.</span>
+                </li>
+                <li>
+                    <h4>Session Ends: </h4> <span class="desc">All messages are erased when the session concludes.</span>
+                </li>
+            </ul>
+            <h3>Features You'll Love:</h3>
+            <ul>
+                <li>
+                    <h4>Simple, clean interface for seamless chatting.</h4> 
+                </li>
+                <li>
+                    <h4>Instant QR code generation for easy sharing.</h4>
+                </li>
+                <li>
+                    <h4>Fully responsive design for any device.</h4> 
+                </li>
+            </ul>
+            <h3>Your Privacy Matters to Us.</h3>
+            <h4>Chat confidently, knowing your conversations are safe and transient.
+            </h4>
+            <div class="button-wrapper">
+                <a href="{% url 'create-room' %}" class="btn-secondary">Start Chatting</a>
             </div>
         </div>
     </div>
+
 </div>
 
 

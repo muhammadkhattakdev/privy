@@ -41,6 +41,12 @@ def create_room(request):
     return render(request, 'createRoom.html', context)
 
 
+def create_group_chat_room(request):
+    context = {}
+    
+
+    return render(request, 'chatRoom.html', context)
+
 def chatRoom(request, roomId):
     context = {}
     context['roomId'] = roomId

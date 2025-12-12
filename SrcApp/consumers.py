@@ -51,7 +51,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
-        # await self.close()
+
 
     async def receive(self, text_data):
 

@@ -75,19 +75,23 @@
     };
 
     document.querySelector('.chat-form').onsubmit = function(e) {
+
         e.preventDefault();
         const input = document.querySelector('input').value;
-        const messageData = {
-            message: input,
-            time: new Date().toLocaleTimeString()
-        };
-
-        socket.send(JSON.stringify(messageData));  
-        document.querySelector('input').value = '';
+        if(input !== '' && input !== null) {
+            console.log("Hello World")
+            const messageData = {
+                message: input,
+                time: new Date().toLocaleTimeString()
+            };
+            socket.send(JSON.stringify(messageData));  
+            document.querySelector('input').value = '';
+        }
     };
 
     window.onload = function() {
 
+        document.querySelector('input').focus();
         fetch(`/messages/?room_id=${roomName}`, {
             method: 'POST',
             headers: {

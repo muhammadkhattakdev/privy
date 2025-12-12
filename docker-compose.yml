@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    container_name: chat_web
+    restart: always
+    command: uvicorn chat_application.asgi:application --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
+    container_name: chat_redis
+    restart: always
+    ports:
+      - "6379:6379"

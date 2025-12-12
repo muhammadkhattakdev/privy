@@ -38,3 +38,6 @@ typing_extensions==4.12.2
 tzdata==2024.2
 urllib3==2.3.0
 zope.interface==7.2
+psycopg2-binary==2.9.9
+uvicorn==0.30.0
+gunicorn==21.2.0
